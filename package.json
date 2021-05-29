@@ -1,0 +1,28 @@
+{
+  "name": "ltweb2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "nodejs"
+  ],
+  "repository":{"url": "git+https://github.com/Lthanhcong/LT_Web2.git"},
+
+  "author": "Thanhcong",
+  "license": "ISC",
+  "devDependencies": {},
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "express-ejs-layouts": "^2.5.0",
+    "node_module": "^0.0.0",
+    "pg-hstore": "^2.3.3",
+    "sequelize": "^6.6.2",
+    "body-parser": "^1.19.0",
+    "cookie-session": "^1.4.0",
+    "express-async-handler": "^1.1.4",
+    "pg": "^8.6.0"
+  }
+}
