@@ -3,14 +3,14 @@ const app = express();
 const bodyParser= require('body-parser');
 const cookieSession = require('cookie-session');
 const expressLayouts = require('express-ejs-layouts');
-const authMiddleware = require('./src/middlerwares/auth');
-const db =require('./src/model/db')
+const authMiddleware = require('./middlerwares/auth');
+const db =require('./model/db')
 
 
-const userRouter=require('./src/routers/user');
-const authRouter=require('./src/routers/auth');
-const sumRouter=require('./src/routers/sum');
-const todoRouter=require('./src/routers/todo');
+const userRouter=require('./routers/user');
+const authRouter=require('./routers/auth');
+const sumRouter=require('./routers/sum');
+const todoRouter=require('./routers/todo');
 
 
 
