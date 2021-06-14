@@ -1,32 +1,36 @@
 const { DataTypes } = require('sequelize');
-const db =require('./db');
-const User =db.define('User', {
+const db = require('./db');
+const User = db.define("User", {
+  Email: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    unique: true
+  },
+  Password: {
+    type: DataTypes.STRING,
+    allowNull: false
+  },
 
-    displayname:{
-        type: DataTypes.STRING,
-        allowNull: false
-    },
-    email:{
-        type: DataTypes.STRING,
-        allowNull: false
-    },
-    password:{
-        type: DataTypes.STRING,
-        allowNull: false
-    },
+  Name: {
+    type: DataTypes.STRING,
+    allowNull: false
+  },
+  Phone: {
+    type: DataTypes.INTEGER,
+    allowNull: false
+  },
+  UserType: {
+    type: DataTypes.INTEGER,
+    allowNull: false
+  },
+  TokenUser: {
+    type: DataTypes.TEXT,
+    allowNull: true
+  },
+  Verify: {
+    type: DataTypes.INTEGER,
+    allowNull: true
+  }
 });
-    
-User.findByEmail= async function(email)
-{
-  return User.findOne({
-    where: {
-        email,
-    },
-  });
-};
-User.findById= async function(id)
-{
-  return User.findByPk(id);
-};
 
-module.exports =User;
+module.exports = User

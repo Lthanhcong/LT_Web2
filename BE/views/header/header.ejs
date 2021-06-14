@@ -7,10 +7,11 @@
       <div class="navbar-nav">
         <a class="nav-item nav-link <%- title ==='Trang Chủ' ? 'active' : '' %>" href="/">Trang Chủ</a>
         <% if (currentUser) { %>
-          <a class="nav-item nav-link <%- title ==='Trang Cá Nhân' ? 'active' : '' %>" href="/sum">Trang Cá Nhân </a>
-        <a class="nav-item nav-link" href="/auth/logout"> Đăng Xuất</a>
+          <a class="nav-item nav-link <%- title ==='Trang Cá Nhân' ? 'active' : '' %>" href="/user/profile">Trang Cá Nhân </a>
+        <a class="nav-item nav-link" href="/logout"> Đăng Xuất</a>
         <% } else { %>
-        <a class="nav-item nav-link <%- title ==='Đăng Nhập' ? 'active' : '' %> "href="/auth/login"> Đăng Nhập</a>
+        <a class="nav-item nav-link <%- title ==='Đăng Nhập' ? 'active' : '' %> "href="/login"> Đăng Nhập</a>
+        <a class="nav-item nav-link <%- title ==='Đăng Ký' ? 'active' : '' %> "href="/user/register"> Đăng Ký</a>
         <% } %>
         <a class="nav-item nav-link disabled" href="#"><%- currentUser ? currentUser.displayname: 'Khách' %></a>
       </div>
