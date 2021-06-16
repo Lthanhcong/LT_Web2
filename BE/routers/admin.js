@@ -1,12 +1,12 @@
 const asyncHandler = require('express-async-handler');
-const ensureLoggedIn= require('../../middlerwares/ensure-logged-in');
-const User =require('../../model/user');
-const cinema=require('../../model/cinema');
-const cineplex=require('../../model/cineplex');
-const ticket=require('../../model/ticket');
-const premiere=require('../../model/premiere');
-const movie=require('../../model/movie');
-const booking=require('../../model/booking');
+const ensureLoggedIn= require('../middlerwares/ensure-logged-in');
+const User =require('../model/user');
+const cinema=require('../model/cinema');
+const cineplex=require('../model/cineplex');
+const ticket=require('../model/ticket');
+const premiere=require('../model/premiere');
+const movie=require('../model/movie');
+const booking=require('../model/booking');
 
 const express=require('express');
 

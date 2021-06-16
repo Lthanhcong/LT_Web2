@@ -1,11 +1,11 @@
 const express = require("express");
-const Movie = require('../../model/movie');
-const Cinema = require('../../model/cinema');
-const Cineplex = require('../../model/cineplex');
-const Premiere = require('../../model/premiere');
-const Booking = require('../../model/booking');
-const Ticket = require('../../model/ticket');
-const User = require('../../model/user');
+const Movie = require('../model/movie');
+const Cinema = require('../model/cinema');
+const Cineplex = require('../model/cineplex');
+const Premiere = require('../model/premiere');
+const Booking = require('../model/booking');
+const Ticket = require('../model/ticket');
+const User = require('../model/user');
 
 const moment = require('moment');
 
