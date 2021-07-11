@@ -1,23 +1,21 @@
-const express = require('express');
-const app = express();
-const bodyParser= require('body-parser');
+const authMiddleware = require('./middlerwares/admin');
 const cookieSession = require('cookie-session');
-const expressLayouts = require('express-ejs-layouts');
-const authMiddleware = require('./middlerwares/auth');
-const db =require('./model/db')
+const bodyParser= require('body-parser');
+const db =require('./model/db');
+const express = require('express');
+const passport=require('passport');
+const User=require('./model/user');
+require('dotenv').config();
 
 
-const userRouter=require('./routers/user');
-const authRouter=require('./routers/auth');
-const sumRouter=require('./routers/sum');
-const todoRouter=require('./routers/todo');
+const indexRouter=require('./routers/index');
 
 
+const app = express();
 
 
-app.set('view engine','ejs');
-
-
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use(cookieSession({
   name: 'session',
@@ -30,16 +28,10 @@ app.use(authMiddleware);
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(expressLayouts);
 
-app.use('/auth',authRouter);
-app.use('/user',userRouter);
-app.use('/sum',sumRouter);
-app.use('/todo',todoRouter);
 
-app.get('/', (req, res) => {
-  res.render('index', { title: 'Trang Chủ'});
-});
+app.use ('/', indexRouter);
+
 
 db.sync().then(function(){
   const port = process.env.PORT||3000;
