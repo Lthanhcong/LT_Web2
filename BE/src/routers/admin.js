@@ -55,7 +55,7 @@ router.get('/', async function (req, res) {
                             ],
                         })
                         .then((bookings) => {
-                            res.status(500).json({ bookings });
+                            res.status(200).json({ bookings });
                         });
                 } else {
                     res.redirect('/');
@@ -80,7 +80,7 @@ router.get('/movie', async function (req, res, next) {
                     movie
                         .findAll()
                         .then(function (movies) {
-                            res.status(500).json({ movies });
+                            res.status(200).json({ movies });
                         })
                         .catch(next);
                 } else {
@@ -106,7 +106,7 @@ router.get('/cinema', async function (req, res, next) {
                     cinema
                         .findAll()
                         .then(function (cinemas) {
-                            res.status(500).json({ cinemas });
+                            res.status(200).json({ cinemas });
                         })
                         .catch(next);
                 } else {
@@ -132,7 +132,7 @@ router.get('/cineplex', async function (req, res, next) {
                     cineplex
                         .findAll()
                         .then(function (Cineplexs) {
-                            res.status(500).json({ Cineplexs });
+                            res.status(200).json({ Cineplexs });
                         })
                         .catch(next);
                 } else {
@@ -157,7 +157,7 @@ router.get('/user', async function (req, res, next) {
                 if (user.Verify == 1 && user.UserType == 1) {
                     User.findAll()
                         .then(function (users) {
-                            res.status(500).json({ users });
+                            res.status(200).json({ users });
                         })
                         .catch(next);
                 } else {
@@ -183,7 +183,7 @@ router.get('/premiere', async function (req, res, next) {
                     premiere
                         .findAll()
                         .then(function (premieres) {
-                            res.status(500).json({ premieres });
+                            res.status(200).json({ premieres });
                         })
                         .catch(next);
                 } else {
@@ -209,7 +209,7 @@ router.get('/booking', async function (req, res, next) {
                     booking
                         .findAll()
                         .then(function (bookings) {
-                            res.status(500).json({ bookings });
+                            res.status(200).json({ bookings });
                         })
                         .catch(next);
                 } else {
@@ -235,7 +235,7 @@ router.get('/ticket', async function (req, res, next) {
                     ticket
                         .findAll()
                         .then(function (tickets) {
-                            res.status(500).json({ tickets });
+                            res.status(200).json({ tickets });
                         })
                         .catch(next);
                 } else {
@@ -246,9 +246,6 @@ router.get('/ticket', async function (req, res, next) {
     }
 });
 
-router.get('/404', function (req, res) {
-    res.send(' error 404');
-});
 
 router.get('/insertmovie', async function (req, res) {
     const userid = req.session.userId;
@@ -262,7 +259,7 @@ router.get('/insertmovie', async function (req, res) {
         }).then((user) => {
             if (user) {
                 if (user.Verify == 1 && user.UserType == 1) {
-                    res.status(500).json({ user });
+                    res.status(200).json({ user });
                 } else {
                     res.redirect('/');
                 }
@@ -283,7 +280,7 @@ router.get('/insertcineplex', async function (req, res) {
         }).then((user) => {
             if (user) {
                 if (user.Verify == 1 && user.UserType == 1) {
-                    res.status(500).json({ user });
+                    res.status(200).json({ user });
                 } else {
                     res.redirect('/');
                 }
@@ -304,7 +301,7 @@ router.get('/insertcinema', async function (req, res) {
         }).then((user) => {
             if (user) {
                 if (user.Verify == 1 && user.UserType == 1) {
-                    res.status(500).json({ user });
+                    res.status(200).json({ user });
                 } else {
                     res.redirect('/');
                 }
@@ -325,7 +322,7 @@ router.get('/insertpremiere', async function (req, res) {
         }).then((user) => {
             if (user) {
                 if (user.Verify == 1 && user.UserType == 1) {
-                    res.status(500).json({ user });
+                    res.status(200).json({ user });
                 } else {
                     res.redirect('/');
                 }

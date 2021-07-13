@@ -3,6 +3,9 @@ const User = require('../model/user');
 const bcrypt = require('bcrypt');
 const host = require('../services/Email/domain');
 
+const logUser = require('../services/auth/logUser');
+const verifyToken = require ('../services/auth/verifyToken');
+
 const moment = require('moment');
 const cinema = require('../model/cinema');
 const cineplex = require('../model/cineplex');

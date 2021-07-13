@@ -5,8 +5,8 @@ const moment = require('moment');
 const router = express.Router();
 
 router.get('/', async function (req, res) {
-    const phimMoiDuocChieu = await movie.findAll({
-        limit: 4,
+    const PhimMoiDuocChieu = await movie.findAll({
+        limit: 6,
         order: [['createdAt', 'ASC']],
     });
     const movies = await movie.findAll({
@@ -15,7 +15,7 @@ router.get('/', async function (req, res) {
             ['NgayCongChieu', 'DESC'],
         ],
     });
-    res.json({ phimMoiDuocChieu, movies, moment });
+    res.json({ PhimMoiDuocChieu, movies, moment });
 });
 
 router.post('/statistics', async function (req, res) {
@@ -24,8 +24,12 @@ router.post('/statistics', async function (req, res) {
     res.redirect('/admin/premiere');
 });
 
-router.get('*', async function (req, res) {
-    res.redirect('/');
-});
+
+
+// router.get('*', async function (req, res) {
+//     res.redirect('/');
+// });
+
+
 
 module.exports = router;

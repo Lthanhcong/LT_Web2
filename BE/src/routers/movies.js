@@ -1,4 +1,3 @@
-const asyncHandler = require('express-async-handler');
 const express = require('express');
 const Movie = require('../model/movie');
 const Cinema = require('../model/cinema');
@@ -13,7 +12,7 @@ const moment = require('moment');
 const router = express.Router();
 
 //phim moi duoc cong chieu
-router.get('/movie', async (req, res) => {
+router.get('/', async (req, res) => {
     //tất cả các phim
     const movie = await Movie.findAll({
         // limit: 4 ,
@@ -115,14 +114,6 @@ router.get('/chair', async function (req, res) {
     });
 });
 
-
-router.get('/success', (req, res) => {
-    res.send('')
-  })
-  
-  router.get('/thatbai', (req, res) => {
-    res.render('category/alert_fail')
-  })
 
 router.post('/book-chair', async (req, res) => {
     const { idsuatchieu } = req.query;

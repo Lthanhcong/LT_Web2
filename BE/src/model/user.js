@@ -23,6 +23,23 @@ const User = db.define('User', {
         type: DataTypes.INTEGER,
         allowNull: false,
     },
+    isAdmin: {
+        type: DataTypes.BOOLEAN,
+        default: false,
+        allowNull: false
+    },
+    facebook: {
+        type: DataTypes.STRING,
+        id: DataTypes.STRING,
+        email: DataTypes.STRING,
+       
+    },
+    google: {
+        type: DataTypes.STRING,
+        id:   DataTypes.STRING,
+        email: DataTypes.STRING,
+        
+    },
     TokenUser: {
         type: DataTypes.TEXT,
         allowNull: true,
