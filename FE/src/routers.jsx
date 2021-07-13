@@ -1,25 +1,28 @@
 import { Route, Switch } from "react-router";
 
-
 /**
- * 
- * @param {*} routers: [] 
+ *
+ * @param {*} routers: []
  */
 export default function renderRouters(routers) {
-    return (
+  return (
     <Switch>
-        {
-            routers.map(e => {
-                let { exact, path, component: Component, routers: childRouters } = e
+      {routers.map((e) => {
+        let { exact, path, component: Component, routers: childRouters } = e;
 
-                let children = null
-                if (childRouters) {
-                    children = renderRouters(childRouters)
-                }
-
-                return <Route exact={exact} path={path} component={(prop) => <Component {...prop}>{children}</Component>} />
-            })
+        let children = null;
+        if (childRouters) {
+          children = renderRouters(childRouters);
         }
+
+        return (
+          <Route
+            exact={exact}
+            path={path}
+            component={(prop) => <Component {...prop}>{children}</Component>}
+          />
+        );
+      })}
     </Switch>
-    )
+  );
 }

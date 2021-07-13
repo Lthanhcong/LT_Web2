@@ -9,9 +9,9 @@ export default function Header() {
         <div className="container">
           <div className="header-area">
             <div className="logo">
-              <a href="index-2.html">
+              <NavLink to="/">
                 <img src="assets/img/logo.png" alt="logo" />
-              </a>
+              </NavLink>
             </div>
             <div className="header-right">
               <form action="#">
@@ -30,9 +30,9 @@ export default function Header() {
                   <a href="#">Welcome Guest!</a>
                 </li>
                 <li>
-                  <a className="login-popup" href="#">
+                  <NavLink className="login-popup" to="/login">
                     Login
-                  </a>
+                  </NavLink>
                 </li>
               </ul>
             </div>
