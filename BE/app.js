@@ -1,51 +1,36 @@
-const authMiddleware = require('./src/middlerwares/admin');
-const cookieSession = require('cookie-session');
-const bodyParser= require('body-parser');
-const db =require('./src/model/db');
-const express = require('express');
-const passport=require('passport');
-const User=require('./src/model/user');
-require('dotenv').config();
+var express = require("express");
+var config = require("config");
+var bodyParser = require("body-parser");
+var session = require("express-session");
+var auth = require('./apps/middlerwares/auth');
 
+var app = express();
+//body parser
+app.use(bodyParser.json());
 
-const defaultRouter=require('./src/routers/default');
-const adminRouter=require('./src/routers/admin');
-const authRouter=require('./src/routers/auth');
-const moviesRouter=require('./src/routers/movies');
-const emailRouter=require('./src/routers/email');
-const categoryRouter=require('./src/routers/category');
+app.set("views", __dirname+"/apps/views");
+app.set('view engine', 'ejs');
 
-
-const app = express();
-
-
-app.use(passport.initialize());
-app.use(passport.session());
-
-app.use(cookieSession({
-  name: 'session',
-  keys: [process.env.COOKIE_KEY||'serect'],
-
-  maxAge: 24 * 60 *60 *1000
+//middlewares
+app.use(bodyParser.urlencoded({
+    extended: true,
+}));
+app.use(session({
+    secret: 'keyboard cat',
+    resave: false,
+    saveUninitialized: true,
 }));
 
-app.use(authMiddleware);
+//check login
+app.use(auth); 
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+//static folder
+app.use("/static", express.static(__dirname+"/public"));
 
+var controllers = require(__dirname+"/apps/routers");
 
-app.use ('/', defaultRouter);
-app.use ('/admin', adminRouter);
-app.use ('/auth', authRouter);
-app.use ('/email', emailRouter);
-app.use ('/category', categoryRouter);
-app.use ('/movies', moviesRouter);
+app.use(controllers);
 
+var port = config.get("server.port") || process.env.PORT;
 
-db.sync().then(function(){
-  const port = process.env.PORT||3000;
-  app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`)
-  });
-}).catch(console.error);
+app.listen(port, () => console.log(`Server listening on port ${port}`));

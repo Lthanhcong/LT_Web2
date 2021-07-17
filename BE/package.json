@@ -18,7 +18,7 @@
   "lint-staged": {
     "src/**/*.{js,json}": "prettier --single-quote --trailing-comma all --write --tab-width 4"
   },
-  "husky":{
+  "husky": {
     "hooks": {
       "pre-commit": "lint-staged"
     }
@@ -33,6 +33,7 @@
     "dotenv": "^10.0.0",
     "express-async-handler": "^1.1.4",
     "express-ejs-layouts": "^2.5.0",
+    "express-session": "^1.17.2",
     "husky": "^6.0.0",
     "json-server": "^0.16.3",
     "jsonwebtoken": "^8.5.1",
