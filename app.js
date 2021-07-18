@@ -1,41 +1,67 @@
-var express = require("express");
-//var config = require("config");
-var bodyParser = require("body-parser");
-var session = require("express-session");
-var auth = require("./apps/middlewares/auth");
+const express = require('express');
+var bodyParser = require('body-parser');
+const expressLayouts = require('express-ejs-layouts');
+const path = require('path');
+const db = require('./models/db');
 
-var app = express();
-//body parser
-app.use(bodyParser.json());
+const authMiddleware = require('./middlewares/auth')
 
-app.set("views", __dirname + "/apps/views");
-app.set("view engine", "ejs");
+var cookieSession = require('cookie-session');
 
-//middlewares
-app.use(
-  bodyParser.urlencoded({
-    extended: true,
-  })
-);
-app.use(
-  session({
-    secret: "keyboard cat",
-    resave: false,
-    saveUninitialized: true,
-  })
-);
+// const adminRouter = require('./routers/admin');
+// const userRouter = require('./routers/user');
+// const authRouter = require('./routers/auth');
+const indexRouter = require('./routers/index');
+const adminRouter = require('./routers/admin');
+const authRouter = require('./routers/auth');
+const categoryRouter = require('./routers/category');
+const defaultRouter = require('./routers/default');
+const phimRouter = require('./routers/phim');
 
-//check login
-app.use(auth);
+const app = express();
+app.use(express.urlencoded({ extended: true }));
+app.use(expressLayouts);
+app.use(express.static('public'));
 
-//static folder
-app.use("/static", express.static(__dirname + "/public"));
+// app.use(Middlewares);
 
-var controllers = require(__dirname + "/apps/controllers");
+//Session
+app.use(cookieSession({
+    name: 'session',
+    keys: [process.env.COOKIE_KEY || 'secret'],
 
-app.use(controllers);
+    //Cookie Options
+    maxAge: 24 * 60 * 60 * 1000,
+}))
 
-//var port = config.get("server.port") || process.env.PORT;
-const port = process.env.PORT || 4009;
+app.use(authMiddleware);
 
-app.listen(port, () => console.log(`Server listening on port ${port}`));
+//EJS
+app.set('views', __dirname + '/views');
+app.set('view engine', 'ejs');
+// app.set('views', path.join(__dirname, 'views'));
+// app.use('/assets', express.static(__dirname + '/public'));
+app.use('/assets', express.static('assets'))
+
+//Xử lý chức năng đăng nhập của cả admin và user
+// //controller
+// app.use('/auth', authRouter);
+// //Xử lý chức năng của admin
+// app.use('/admin', adminRouter);
+// //Xử lý chức năng của user
+// app.use('/', userRouter);
+app.use("/admin", adminRouter);
+app.use("/default", defaultRouter);
+app.use("/auth", authRouter);
+app.use("/category", phimRouter);
+app.use("/insert", categoryRouter);
+//router chung cho tất cả hệ thống
+app.get("/", async function(req, res) {
+    res.redirect("/default");
+});
+
+db.sync().then(function() {
+    const port = process.env.PORT || 3000;
+    console.log(`Server is listening on port ${port}`);
+    app.listen(port);
+}).catch(console.error)
