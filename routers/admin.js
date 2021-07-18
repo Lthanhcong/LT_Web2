@@ -6,6 +6,7 @@ var User = require('../models/User');
 var SuatChieu = require('../models/SuatChieu');
 var DatCho = require('../models/DatCho');
 var Ve = require('../models/Ve');
+const asyncHandler = require('express-async-handler');
 
 var router = express.Router();
 
@@ -216,7 +217,17 @@ router.get('/ve', async function(req, res, next) {
         });
     }
 });
+// router.get("/login", function(req, res){
+//     res.render("admin/login");
+// });
 
+// router.get("/register", function(req, res){
+//     res.render("admin/register");
+// });
+
+// router.get("/forgot-password", function(req, res){
+//     res.render("admin/forgot-password")
+// });
 
 router.get("/404", function(req, res) {
     res.render("admin/pages/404");

@@ -315,16 +315,17 @@ router.post('/dat-ghe', async (req, res) => {
 
                   }).then(ve => {
                     ve.map(item => {
-                      const {sendMailBookingTicket} = require('../../mailer/mailer_user')
+                      const {sendMailBookingTicket} = require('../mailer/mailer_user')
                       let Email = item.DatCho.User.Email
                       let MaVe = item.MaVe
                       let MaGhe = item.MaGhe
                       let TenRap = item.DatCho.SuatChieu.Rap.TenRap
+                      let Tencumrap = item.CumRap.Tencumrap
                       let Ten = item.DatCho.SuatChieu.Phim.Ten
                       let ThoiDiemBatDau = item.DatCho.SuatChieu.ThoiDiemBatDau
                       let GiaVe = item.DatCho.SuatChieu.GiaVe
 
-                      sendMailBookingTicket(Email, MaVe, MaGhe, TenRap, Ten, ThoiDiemBatDau, GiaVe)
+                      sendMailBookingTicket(Email, MaVe, MaGhe, TenRap, Tencumrap, Ten, ThoiDiemBatDau, GiaVe)
                     })
                   })
                   res.redirect('/category/thanhcong')
@@ -377,18 +378,19 @@ router.post('/dat-ghe', async (req, res) => {
 
                 }).then(ve => {
                   ve.map(item => {
-                    const {sendMailBookingTicket} = require('../../mailer/mailer_user')
+                    const {sendMailBookingTicket} = require('../mailer/mailer_user')
 
                     let Email = item.DatCho.User.Email
                     let MaVe = item.MaVe
                     let MaGhe = item.MaGhe
                     let TenRap = item.DatCho.SuatChieu.Rap.TenRap
+                    let Tencumrap = item.CumRap.Tencumrap
                     let Ten = item.DatCho.SuatChieu.Phim.Ten
                     let ThoiDiemBatDau = item.DatCho.SuatChieu.ThoiDiemBatDau
                     let GiaVe = item.DatCho.SuatChieu.GiaVe
                     let MaDatCho = item.DatChoMaDatCho
 
-                    sendMailBookingTicket(Email, MaVe, MaGhe, TenRap, Ten, ThoiDiemBatDau, GiaVe)
+                    sendMailBookingTicket(Email, MaVe, MaGhe, TenRap, Tencumrap, Ten, ThoiDiemBatDau, GiaVe)
                   })
 
                 })
@@ -487,6 +489,7 @@ router.get('/thongtinrap', async function (req, res, next) {
       id: id
     }
   }).then(function (cumraps) {
+    console.log(cumraps);
     res.render('category/thongtinrap', {cumraps});
   }).catch(next);
 });

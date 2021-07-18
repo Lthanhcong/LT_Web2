@@ -1,4 +1,3 @@
-<%- include('../header'); -%>
 <section class="login first grey">
     <div class="container">
         <!-- Nested Row within Card Body -->
@@ -12,19 +11,16 @@
                     <div class="form-group row">
                         <div class="col-sm-6 mb-3 mb-sm-0">
                             <label for="">Tên Của Bạn</label>
-                            <input type="text" class="form-control form-control-user" id="exampleFirstName"
-                                   placeholder="Tên" value="<%= users.Name %>" name="Name">
+                            <input type="text" class="form-control form-control-user" id="exampleFirstName" placeholder="Tên" value="<%= users.Name %>" name="Name">
                         </div>
                         <div class="col-sm-6">
                             <label for="">Số Điện Thoại</label>
-                            <input type="text" class="form-control form-control-user" id="exampleLastName"
-                                   placeholder="Số điện thoại" value="<%= users.Phone %>" name="Phone">
+                            <input type="text" class="form-control form-control-user" id="exampleLastName" placeholder="Số điện thoại" value="<%= users.Phone %>" name="Phone">
                         </div>
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <label for="">Email</label>
-                                <input type="email" class="form-control form-control-user" id="exampleInputEmail"
-                                       placeholder="Email Address" value="<%= users.Email %>" name="Email">
+                                <input type="email" class="form-control form-control-user" id="exampleInputEmail" placeholder="Email Address" value="<%= users.Email %>" name="Email">
                             </div>
                         </div>
                         <div class="col-sm-6">
@@ -42,29 +38,38 @@
                 </div>
                 <table class="table">
                     <thead>
-                    <tr>
-                        <th scope="col">Ngày Giờ</th>
-                        <th scope="col">Phim</th>
-                        <th scope="col">Rạp</th>
-                        <th scope="col">Cụm Rạp</th>
-                        <th scope="col">Ghế</th>
-                    </tr>
+                        <tr>
+                            <th scope="col">Ngày Giờ</th>
+                            <th scope="col">Phim</th>
+                            <th scope="col">Rạp</th>
+                            <th scope="col">Cụm Rạp</th>
+                            <th scope="col">Ghế</th>
+                        </tr>
                     </thead>
                     <tbody>
-                    <% user.map(item=>{ %>
-                        <tr>
-                            <% var convertTime = moment(item.DatCho.ThoiDiemDatVe).format('MMMM Do YYYY, h:mm:ss a'); %>
-                            <td><%= convertTime %></td>
-                            <td><%= item.DatCho.SuatChieu.Phim.Ten %></td>
-                            <td><%= item.DatCho.SuatChieu.Rap.TenRap %></td>
-                            <td><%= item.DatCho.SuatChieu.Rap.CumRap.TenCum %></td>
-                            <td><%= item.MaGhe %></td>
-                        </tr>
-                    <% }) %>
+                        <% user.map(item=>{ %>
+                            <tr>
+                                <% var convertTime = moment(item.DatCho.ThoiDiemDatVe).format('MMMM Do YYYY, h:mm:ss a'); %>
+                                    <td>
+                                        <%= convertTime %>
+                                    </td>
+                                    <td>
+                                        <%= item.DatCho.SuatChieu.Phim.Ten %>
+                                    </td>
+                                    <td>
+                                        <%= item.DatCho.SuatChieu.Rap.TenRap %>
+                                    </td>
+                                    <td>
+                                        <%= item.DatCho.SuatChieu.Rap.CumRap.TenCum %>
+                                    </td>
+                                    <td>
+                                        <%= item.MaGhe %>
+                                    </td>
+                            </tr>
+                            <% }) %>
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
 </section>
-<%- include('../footer'); -%>

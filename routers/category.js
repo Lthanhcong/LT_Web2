@@ -119,4 +119,4 @@ router.get('/thongke', async function(req, res) {
         res.render('indexadmin', { user })
     })
 });
-module.exports = router
+module.exports = router;

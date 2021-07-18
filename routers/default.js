@@ -32,8 +32,8 @@ router.post('/thongke', async function(req, res) {
     res.redirect('/admin/suatchieu');
 });
 
-// router.get("*", async function(req, res) {
-//     res.redirect("/");
-// })
+router.get("*", async function(req, res) {
+    res.redirect("/");
+})
 
 module.exports = router;
