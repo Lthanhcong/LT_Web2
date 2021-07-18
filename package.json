@@ -1,0 +1,46 @@
+{
+  "name": "lt_web2",
+  "version": "1.0.0",
+  "description": "<h1> Đồ Án Lập Trình Web 2 </h1> </br> \r <p> xây dựng Website đặt vé xem phim </p> </br>\r <h2> Thành Viên  </h2> </br>\r <p>18600334   Lê Thành Công </br>\r 18600355   Trần Phi Long </br>\r 18600278   Thân Văn Đức Tính </br>\r 18600319   Phạm Đình Văn </br> </p>",
+  "main": "app.js ",
+  "scripts": {
+    "start": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Lthanhcong/LT_Web2.git"
+  },
+  "keywords": [
+    "NodeJS", 
+    "expressJS"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Lthanhcong/LT_Web2/issues"
+  },
+  "homepage": "https://github.com/Lthanhcong/LT_Web2#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "bluebird": "^3.7.2",
+    "body-parser": "^1.19.0",
+    "config": "^3.3.6",
+    "dotenv": "^10.0.0",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "express-handlebars": "^5.3.2",
+    "express-session": "^1.17.2",
+    "handlebars": "^4.7.7",
+    "jsonwebtoken": "^8.5.1",
+    "moment": "^2.29.1",
+    "multer": "^1.4.2",
+    "nodemailer": "^6.6.3",
+    "nodemon": "^2.0.12",
+    "pg": "^8.6.0",
+    "pg-hstore": "^2.3.4",
+    "save": "^2.4.0",
+    "sequelize": "^6.6.5",
+    "validator": "^13.6.0"
+  }
+}
