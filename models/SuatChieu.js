@@ -4,6 +4,11 @@ const Phim = require('./Phim');
 const Rap = require('./Rap');
 
 const SuatChieu = db.define('SuatChieu', {
+    id: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        primaryKey: true
+    },
     ThoiDiemBatDau: {
         type: Sequelize.STRING,
         allowNull: true

@@ -2,6 +2,11 @@ const db = require('./db');
 const Sequelize = require("sequelize");
 const CumRap = require('./CumRap')
 const Rap = db.define("Rap", {
+    id: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        primaryKey: true
+    },
     TenRap: {
         type: Sequelize.STRING,
         allowNull: false

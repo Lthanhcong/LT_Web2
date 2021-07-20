@@ -2,6 +2,11 @@ const db = require('./db');
 const Sequelize = require("sequelize");
 
 const Phim = db.define('Phim', {
+    id: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        primaryKey: true
+    },
     Ten: {
         type: Sequelize.STRING,
         allowNull: false
