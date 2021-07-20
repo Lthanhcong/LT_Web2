@@ -4,7 +4,7 @@ module.exports = {
   email: "web.phamdinhvan@gmail.com",
   //Thêm pass
   pass: "",
-  siteName: "MEGALODON CINEMA",
+  siteName: "CK CINEMA",
   //Thêm pass
   password: "",
 
