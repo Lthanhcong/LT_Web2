@@ -1,3 +1,4 @@
+<%- include('../header'); -%>
 <section class="best-of-the-week">
     <div class="container">
         <div class="row">
@@ -5,7 +6,9 @@
                 <div>TraiLers</div>
             </div>
             <div class="col-md-6 col-xs-6 col-sm-6">
-                <iframe width="560" height="315" src="<%= phims.TraiLers %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe width="560" height="315" src="<%= phims.TraiLers %>" frameborder="0"
+                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
             </div>
             <div class="col-md-6 col-xs-6 col-sm-6">
                 <span class="tt"><%= phims.Ten %></span>
@@ -28,3 +31,4 @@
         </div>
     </div>
 </section>
+<%- include('../footer'); -%>

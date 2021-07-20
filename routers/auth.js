@@ -256,9 +256,9 @@ router.post('/quen-mat-khau', async(req, res) => {
         }
     }).then(user => {
         if (user) {
-            const { sendMailForgetPassword } = require('../../mailer/mailer_user')
+            const { sendMailForgetPassword } = require('../mailer/mailer_user')
 
-            const link = 'http://localhost:3000'.domain + '/auth/cap-nhat-mat-khau?token=' + user.TokenUser
+            const link = 'http://localhost:3000' + '/auth/cap-nhat-mat-khau?token=' + Email
             sendMailForgetPassword(user.Email, user.Name, link)
             res.render('auth/mail_forget')
 
@@ -272,19 +272,29 @@ router.post('/quen-mat-khau', async(req, res) => {
 /**
  * @Đổi_Mật_Khẩu
  */
+// router.get('/cap-nhat-mat-khau', async(req, res) => {
+//     const { token } = req.query
+//     var err = []
+//     if (!token) {
+//         return res.redirect('/auth/login')
+//     }
+//     return res.render('auth/update_password', { err, token: token })
+// })
 router.get('/cap-nhat-mat-khau', async(req, res) => {
     const { token } = req.query
     var err = []
     if (!token) {
         return res.redirect('/auth/login')
     }
-    return res.render('auth/update_password', { err, token: token })
+    return res.render('auth/update_password', { token })
 })
+
 
 /**
  * @Post_Đổi_mật_khẩu
  */
 router.post('/cap-nhat-mat-khau/:token', async(req, res) => {
+    //Nhận email
     const { token } = req.params
     const { Password, XacNhan_Password } = req.body
 
@@ -292,7 +302,7 @@ router.post('/cap-nhat-mat-khau/:token', async(req, res) => {
         return res.redirect(`/auth/cap-nhat-mat-khau?token=${token}`)
     }
     if (Password !== XacNhan_Password) {
-        // const err = "Mật Khẩu Không Khớp"
+        const err = "Mật Khẩu Không Khớp"
         return res.redirect(`/auth/cap-nhat-mat-khau?token=${token}`)
     }
     await bcrypt.genSalt(10, (err, salt) => {
@@ -302,7 +312,7 @@ router.post('/cap-nhat-mat-khau/:token', async(req, res) => {
                 Password: hash,
             }, {
                 where: {
-                    TokenUser: token
+                    Email: token
                 }
             }).then(user => {
                 res.redirect('/auth/login')

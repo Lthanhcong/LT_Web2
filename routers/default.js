@@ -10,6 +10,22 @@ const asyncHandler = require('express-async-handler');
 
 var router = express.Router();
 
+
+//Hiển thị hình ảnh
+router.get('/image/:id', asyncHandler(async function(req, res) {
+    const phim = await Phim.findByPk(req.params.id);
+    if (!phim || !phim.Poster) {
+        res.status(404).send('File not found');
+    } else {
+        res.header('Content-Type', 'image/jpeg').send(phim.Poster);
+    }
+}))
+
+router.get('/logout', async(req, res) => {
+    delete req.session.userId
+    res.redirect("/")
+})
+
 router.get("/", async function(req, res) {
     const phimMoiDuocChieu = await Phim.findAll({
         limit: 4,

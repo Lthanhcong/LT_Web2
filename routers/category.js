@@ -16,6 +16,12 @@ var path = require('path');
 
 var cpUpload = upload.fields([{ name: 'anhphim', maxCount: 1 }])
 
+
+router.get('/logout', async(req, res) => {
+    delete req.session.userId
+    res.redirect("/")
+})
+
 router.post('/upload', cpUpload, async(req, res) => {
 
     let anhSave = req.files['anhphim'][0].originalname
@@ -47,7 +53,10 @@ router.post('/deletephim/:id', async function(req, res) {
 });
 
 router.post('/insertcumrap', async function(req, res, next) {
+    const listCumRap = await CumRap.findAll();
+    const all = listCumRap.length;
     await CumRap.create({
+        id: all+1,
         TenCum: req.body.TenCum,
         DiaChi: req.body.DiaChi,
         Maps: req.body.Maps
@@ -65,11 +74,15 @@ router.post('/deletecumrap/:id', async function(req, res) {
 });
 
 router.post('/insertrap', async function(req, res, next) {
+    const listRap = await Rap.findAll();
+    const all = listRap.length;
     await Rap.create({
+        id: all+1,
         TenRap: req.body.TenRap,
         LoaiRap: req.body.LoaiRap,
         KTNgang: req.body.KTNgang,
         KTDoc: req.body.KTDoc,
+        CumRapId: req.body.CumRapId,
     });
     res.redirect('/admin/rap');
 });
@@ -84,7 +97,10 @@ router.post('/deleterap/:id', async function(req, res) {
 });
 
 router.post('/insertsuatchieu', async function(req, res, next) {
+    const listSuatChieu = await SuatChieu.findAll();
+    const all = listSuatChieu.length;
     await SuatChieu.create({
+        id: all+1,
         ThoiDiemBatDau: req.body.TDBD,
         ThoiDiemKetThuc: req.body.TDKT,
         GiaVe: req.body.GiaVe,
@@ -119,4 +135,4 @@ router.get('/thongke', async function(req, res) {
         res.render('indexadmin', { user })
     })
 });
-module.exports = router;
+module.exports = router

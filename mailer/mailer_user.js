@@ -34,9 +34,16 @@ exports.sendMailForgetPassword = (email, fullName, link) => {
 }
 
 exports.sendMailBookingTicket = (email, _mave, _maghe, _tenrap, _tenphim, _thoidiembatdau, _giatien) => {
-    let emailContent = getHeaderEmail('XIN CHÀO') +
-        getContentTicket('THÔNG TIN VÉ', _mave, _maghe, _tenrap, _tenphim, _thoidiembatdau, _giatien); +
-    getFooterEmail();
+    // let emailContent = getHeaderEmail('XIN CHÀO') +
+    //     getContentTicket('THÔNG TIN VÉ', _mave, _maghe, _tenrap, _tenphim, _thoidiembatdau, _giatien); +
+    // getFooterEmail();
+    let emailContent = '<br><b style="font-size: 16px; text-align: center; display: block;">' + 'Mã Vé: ' + _mave + '</b>' +
+        '<br><b style="font-size: 16px; text-align: center; display: block;">' + 'Mã Ghế: ' + _maghe + '</b>' +
+        '<br><b style="font-size: 16px; text-align: center; display: block;">' + 'Tên Rạp: ' + _tenrap + '</b>' +
+        '<br><b style="font-size: 16px; text-align: center; display: block;">' + 'Tên Phim: ' + _tenphim + '</b>' +
+        '<br><b style="font-size: 16px; text-align: center; display: block;">' + 'Thời Điểm Đặt Vé: ' + _thoidiembatdau + '</b>' +
+        '<br><b style="font-size: 16px; text-align: center; display: block;">' + 'Giá Tiền: ' + _giatien + '</b>' +
+        '<br>';
     mailer(email, 'XÁC NHẬN THÔNG TIN ĐẶT VÉ', emailContent, function(callback) {
         console.log('_____________________________________')
         console.log(callback);

@@ -1,6 +1,6 @@
 const express = require('express');
 var bodyParser = require('body-parser');
-const expressLayouts = require('express-ejs-layouts');
+// const expressLayouts = require('express-ejs-layouts');
 const path = require('path');
 const db = require('./models/db');
 
@@ -20,7 +20,7 @@ const phimRouter = require('./routers/phim');
 
 const app = express();
 app.use(express.urlencoded({ extended: true }));
-app.use(expressLayouts);
+// app.use(expressLayouts);
 app.use(express.static('public'));
 
 // app.use(Middlewares);

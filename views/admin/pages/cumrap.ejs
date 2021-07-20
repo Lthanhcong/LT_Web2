@@ -1,3 +1,4 @@
+<%- include('../layout/header'); -%>
 <!-- End of Topbar -->
 
 <!-- Begin Page Content -->
@@ -16,43 +17,37 @@
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Tên Cụm</th>
-                            <th>Địa chỉ</th>
-                            <th>Xóa</th>
-                        </tr>
+                    <tr>
+                        <th>ID</th>
+                        <th>Tên Cụm</th>
+                        <th>Địa chỉ</th>
+                        <th>Xóa</th>
+                    </tr>
                     </thead>
                     <tfoot>
-                        <tr>
-                            <th>ID</th>
-                            <th>Tên Cụm</th>
-                            <th>Địa chỉ</th>
-                            <th>Xóa</th>
-                        </tr>
+                    <tr>
+                        <th>ID</th>
+                        <th>Tên Cụm</th>
+                        <th>Địa chỉ</th>
+                        <th>Xóa</th>
+                    </tr>
 
                     </tfoot>
                     <tbody>
-                        <% cumraps.map(item =>{ %>
-                            <tr>
-                                <td>
-                                    <%= item.id %>
-                                </td>
-                                <td>
-                                    <%= item.TenCum %>
-                                </td>
-                                <td>
-                                    <%= item.DiaChi %>
-                                </td>
-                                <td>
-                                    <form method="POST" action="/insert/deletecumrap/<%= item.id %>">
-                                        <button type="submit" class="btn btn-danger btn-circle btn-sm"><i
+                    <% cumraps.map(item =>{ %>
+                    <tr>
+                        <td><%= item.id %></td>
+                        <td><%= item.TenCum %></td>
+                        <td><%= item.DiaChi %></td>
+                        <td>
+                            <form method="POST" action="/insert/deletecumrap/<%= item.id %>">
+                                <button type="submit" class="btn btn-danger btn-circle btn-sm"><i
                                             class="fas fa-trash"></i>
                                 </button>
-                                    </form>
-                                </td>
-                            </tr>
-                            <% }) %>
+                            </form>
+                        </td>
+                    </tr>
+                    <% }) %>
                     </tbody>
                 </table>
             </div>
@@ -62,7 +57,8 @@
 </div>
 <!-- /.container-fluid -->
 
-
+</div>
 <!-- End of Main Content -->
 
 <!-- Footer -->
+<%- include('../layout/footer'); -%>
