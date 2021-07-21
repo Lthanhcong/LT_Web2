@@ -15,6 +15,10 @@ const CumRap = db.define("CumRap", {
         type: Sequelize.STRING,
         allowNull: false
     },
+    Maps: {
+        type: Sequelize.TEXT,
+        allowNull: false
+    }
 });
 
 module.exports = CumRap

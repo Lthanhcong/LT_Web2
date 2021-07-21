@@ -48,7 +48,7 @@ router.post("/upload", upload.single("pic"), async (req, res) => {
   console.log(listPhim[all - 1]);
   console.log(listPhim[all - 1].id + 1);
   await Phim.create({
-    id: listPhim[all - 1].id + 1,
+    id: all +1,
     Ten: Ten,
     NgayCongChieu: NgayCongChieu,
     Poster: pic,
@@ -70,15 +70,16 @@ router.post("/deletephim/:id", async function (req, res) {
   res.redirect("/admin/phim");
 });
 
-router.post("/insertcumrap", async function (req, res, next) {
+router.post('/insertcumrap', async function(req, res, next) {
   const listCumRap = await CumRap.findAll();
   const all = listCumRap.length;
   await CumRap.create({
-    id: listCumRap[all - 1].id + 1,
-    TenCum: req.body.TenCum,
-    DiaChi: req.body.DiaChi,
+      id: all + 1,
+      TenCum: req.body.TenCum,
+      DiaChi: req.body.DiaChi,
+      Maps: req.body.Maps
   });
-  res.redirect("/admin/cumrap");
+  res.redirect('/admin/cumrap');
 });
 
 router.post("/deletecumrap/:id", async function (req, res) {
@@ -94,7 +95,7 @@ router.post("/insertrap", async function (req, res, next) {
   const listRap = await Rap.findAll();
   const all = listRap.length;
   await Rap.create({
-    id: listRap[all - 1].id + 1,
+    id: all + 1,
     TenRap: req.body.TenRap,
     LoaiRap: req.body.LoaiRap,
     KTNgang: req.body.KTNgang,
@@ -110,21 +111,21 @@ router.post("/deleterap/:id", async function (req, res) {
       id: req.params.id,
     },
   });
-  res.redirect("/admin/rap");
+  res.redirect("/admin/rap"); 
 });
 
-router.post("/insertsuatchieu", async function (req, res, next) {
+router.post('/insertsuatchieu', async function(req, res, next) {
   const listSuatChieu = await SuatChieu.findAll();
   const all = listSuatChieu.length;
   await SuatChieu.create({
-    id: listSuatChieu[all - 1].id + 1,
-    ThoiDiemBatDau: req.body.TDBD,
-    ThoiDiemKetThuc: req.body.TDKT,
-    GiaVe: req.body.GiaVe,
-    PhimId: req.body.idphim,
-    RapId: req.body.idrap,
+      id: all + 2,
+      ThoiDiemBatDau: req.body.TDBD,
+      ThoiDiemKetThuc: req.body.TDKT,
+      GiaVe: req.body.GiaVe,
+      PhimId: req.body.idphim,
+      RapId: req.body.idrap,
   });
-  res.redirect("/admin/suatchieu");
+  res.redirect('/admin/suatchieu');
 });
 
 router.post("/deletesuatchieu/:id", async function (req, res) {

@@ -1,12 +1,12 @@
 module.exports = {
   //Đổi email 2 dòng này
-  supportMail: "web.phamdinhvan@gmail.com",
-  email: "web.phamdinhvan@gmail.com",
+  supportMail: "18600334ck1@gmail.com",
+  email: "18600334ck1@gmail.com",
   //Thêm pass
-  pass: "",
+  pass: "Ltw2123456",
   siteName: "CK CINEMA",
   //Thêm pass
-  password: "",
+  password: "Ltw2123456",
 
   host: "smtp.gmail.com",
   port: "587",
