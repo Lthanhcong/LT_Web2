@@ -1,6 +1,6 @@
 const { Sequelize } = require('sequelize');
 
-module.exports = new Sequelize(process.env.DATABASE_URL || 'postgres://postgres:Lethanhcong2401@localhost:5432/LTWEB2',{
+module.exports = new Sequelize(process.env.DATABASE_URL || 'postgres://postgres:12345@localhost:5432/LTWEB2',{
   // dialect: 'postgres',
   // protocol: 'postgres',
   // dialectOptions: {}, //removed ssl
@@ -15,10 +15,10 @@ module.exports = new Sequelize(process.env.DATABASE_URL || 'postgres://postgres:
       }
       return next();
     },
-    ssl: {
-      require: true,
-      rejectUnauthorized: false,
-    },
+    // ssl: {
+    //   require: true,
+    //   rejectUnauthorized: false,
+    // },
   },
   timezone: 'Asia/Ho_Chi_Minh'
 });
