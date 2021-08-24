@@ -1,4 +1,4 @@
-const User = require('../models/User');
+const User = require('../models/user');
 
 const auth = function(req, res, next) {
     res.locals.currentUser = null;

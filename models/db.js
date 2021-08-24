@@ -15,10 +15,10 @@ module.exports = new Sequelize(process.env.DATABASE_URL || 'postgres://postgres:
       }
       return next();
     },
-    // ssl: {
-    //   require: true,
-    //   rejectUnauthorized: false,
-    // },
+    ssl: {
+      require: true,
+      rejectUnauthorized: false,
+    },
   },
   timezone: 'Asia/Ho_Chi_Minh'
 });
