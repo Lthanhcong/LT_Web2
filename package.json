@@ -33,7 +33,7 @@
         "pg-hstore": "^2.3.3",
         "random": "^3.0.6",
         "save": "^2.4.0",
-        "sequelize": "^6.6.2",
+        "sequelize": "^6.6.5",
         "util": "^0.12.3",
         "validator": "^11.0.0"
     }
